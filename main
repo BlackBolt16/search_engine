@@ -1,0 +1,58 @@
+import java.io.*;
+class search_engine
+{
+    public static void main()throws IOException
+    {
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+        udf ob = new udf();
+        int ctr=1;
+        while(true)
+        {
+            System.out.println("\t\t\t\t\t\t WELCOME TO INFERNO                     ");
+            ob.delay1();
+            System.out.println("\t\t\t\t\t\t Would you like to \n\t\t\t\t\t\t 1)search for something? \n\t\t\t\t\t\t 2)Create a new File");
+            ob.delay1(); 
+            System.out.println("");
+            System.out.print("\t\t\t\t\t\t | "); String str=br.readLine();
+            if(str.equalsIgnoreCase("no")||str.equalsIgnoreCase("n"))
+            {
+                System.out.println("");System.out.println("\t\t\t\t\t\t Thank you for trying inferno");
+                ob.delay1();
+                break;
+            }
+            else if(str.equalsIgnoreCase("yes")||str.equalsIgnoreCase("y"))
+            {
+                ctr=1;
+                ob.delay1();
+                System.out.println(" \n \n \n\t\t\t\t\t\t WHAT WOULD YOU LIKE TO SEARCH FOR?? ");
+                ob.delay1();
+                System.out.println("");
+                System.out.print("\t\t\t\t\t\t | ");
+                String wrd=br.readLine();
+                ob.delay1();
+                System.out.println("\n \n \n\t\t\t\t\t\t WOULD YOU LIKE TO SEARCH IN THE D:drive OR C:drive OR JAVA CLASS  ");
+                ob.delay1();
+                System.out.print("\n \n \n\t\t\t\t\t\t OR DO YOU WANT A LIST OF FILES?   ");
+                ob.delay1();
+                System.out.println("");
+                System.out.println("");
+                System.out.print("\t\t\t\t\t\t | ");
+                String drive=br.readLine();
+                System.out.println(" \n \n ");
+                if(drive.equalsIgnoreCase("L")||drive.equalsIgnoreCase("List"))
+                {
+                    ob.listFiles();
+                    break;
+                }
+                ob.checkFiles(drive,wrd);
+            }
+        }
+    }
+}
+
+
+
+
+
+    
