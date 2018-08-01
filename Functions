@@ -1,0 +1,106 @@
+import java.io.*;
+public class udf
+{
+    public  boolean part2(String str1, String str2)
+    {
+        if(!(str1.length()==str2.length()))
+        {
+            if(str1.equalsIgnoreCase(str2.substring(0,Math.min(str1.length(),str2.length()))))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }    
+        }
+
+        else if(str1.length()==str2.length()&& str1.equalsIgnoreCase(str2))
+        {return true;}
+        else
+            return false;
+    }
+    public void delay1()
+    {
+        for(long j=0;j<=400000000l;j++);
+    }
+    public void delay2()
+    {
+        for(long j=0;j<=2500000000l;j++);
+    }
+    public void thanking()
+    {
+        udf ob = new udf();
+        ob.delay2();
+        System.out.println(" \f \n \n\t\t\t\t\t\tTHANK YOU FOR TRYING INFERNO! ");
+        ob.delay2();
+        System.out.println("\f");
+    }
+    public void noFile( int ctr)
+    {
+        udf ob = new udf();
+        if(ctr==1)
+        System.out.println("\n\t\t\t\t\t\t NO FILE FOUND");
+        ob.delay2();
+        System.out.println("\f");
+    }
+    public void listFiles()throws IOException
+    {
+            InputStreamReader isr = new InputStreamReader(System.in);
+            BufferedReader br = new BufferedReader(isr);
+            udf ob = new udf();
+            ob.delay1();
+            System.out.print("\n \n \n\t\t\t\t\t\t WHICH DRIVE: C-DRIVE OR D-DRIVE?   ");
+            ob.delay1(); 
+            System.out.println("");   
+            System.out.print("\t\t\t\t\t\t | ");
+            char which=(char)br.read();
+            String s = Character.toUpperCase(which)+":\\\\";
+            File folder = new File(s);
+            File[] listOfFiles = folder.listFiles();
+            for(int i=0;i<listOfFiles.length;i++)
+            {
+                if(listOfFiles[i].isFile()  ) 
+                {
+                    System.out.println("\n \t\t\t\t\t\t File  " + listOfFiles[i].getName());
+                    ob.delay1();    
+                }
+                if(listOfFiles[i].isDirectory())
+                {
+                    System.out.println("\n\t\t\t\t\t\t directory  "+ listOfFiles[i].getName());
+                    ob.delay1();
+                }
+            }
+            ob.thanking();
+    }
+    public void checkFiles(String drive,String wrd)
+    {
+        if(drive.equalsIgnoreCase("D")||drive.equalsIgnoreCase("C")||drive.equalsIgnoreCase("java")||drive.equalsIgnoreCase("j"))
+        {
+        int ctr = 1;
+        udf ob = new udf();
+        String s = drive.toUpperCase()+":\\\\";
+        if(drive.equalsIgnoreCase("java")||drive.equalsIgnoreCase("j"))
+        s=".";
+        File folder = new File(s);
+        File[] listOfFiles = folder.listFiles();
+        for(int i=0;i<listOfFiles.length;i++)
+        {
+            if(listOfFiles[i].isFile()&& ob.part2(wrd,listOfFiles[i].getName()))
+            {
+                System.out.println("\n \t\t\t\t\t\t File  " + listOfFiles[i].getName());
+                ob.delay1();
+                ctr++;
+            }
+            if(listOfFiles[i].isDirectory()&& ob.part2(wrd,listOfFiles[i].getName()  ))
+            {
+                System.out.println("\n \t\t\t\t\t\t directory  "+ listOfFiles[i].getName());
+                ob.delay1();
+                ctr++;    
+            }
+        }
+        ob.noFile(ctr);
+    }
+}  
+}
+ 
